@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perspectivas Clave en Ciberseguridad: Un Análisis Detallado</title>
+    <style>
+        body {
+            font-family: 'Roboto', 'Arial', sans-serif;
+            line-height: 1.7;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f9fa; /* Un gris muy claro */
+            color: #343a40; /* Gris oscuro para el texto */
+        }
+
+        .container {
+            width: 85%;
+            max-width: 1100px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #ffffff; /* Blanco para el contenido principal */
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            border-radius: 10px;
+        }
+
+        header {
+            background: linear-gradient(135deg, #007bff, #0056b3); /* Azul degradado */
+            color: #fff;
+            padding: 2rem 1rem;
+            text-align: center;
+            border-radius: 10px 10px 0 0;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2.6rem;
+            font-weight: 700;
+        }
+        header p {
+            font-size: 1.1rem;
+            margin-top: 8px;
+            opacity: 0.9;
+        }
+
+        nav {
+            background: #343a40; /* Gris oscuro para la navegación */
+            color: #fff;
+            padding: 0.8rem 0;
+            text-align: center;
+            margin-bottom: 25px;
+            border-radius: 0 0 10px 10px;
+        }
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        nav ul li {
+            display: inline-block;
+            margin: 0 10px;
+        }
+        nav ul li a {
+            color: #f8f9fa;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            transition: color 0.3s ease, background-color 0.3s ease;
+            border-radius: 5px;
+            font-weight: 500;
+        }
+        nav ul li a:hover, nav ul li a.active {
+            background-color: #007bff;
+            color: #fff;
+        }
+
+        .section {
+            margin-bottom: 30px;
+            padding: 25px;
+            background-color: #fefefe;
+            border-left: 5px solid #007bff; /* Borde azul distintivo */
+            border-radius: 8px;
+        }
+
+        .section h2 {
+            color: #0056b3; /* Azul más oscuro */
+            border-bottom: 2px solid #e9ecef; /* Línea divisoria sutil */
+            padding-bottom: 12px;
+            margin-top: 0;
+            font-size: 1.8rem;
+        }
+
+        details {
+            background-color: #f1f3f5; /* Gris muy claro para el fondo */
+            border: 1px solid #dee2e6; /* Borde gris */
+            border-radius: 8px;
+            margin-bottom: 15px;
+            transition: box-shadow 0.3s ease;
+        }
+        details:hover {
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        details[open] {
+            background-color: #e9ecef; /* Gris un poco más oscuro al abrir */
+        }
+
+        summary {
+            font-weight: 600; /* Semi-bold */
+            cursor: pointer;
+            padding: 15px 20px;
+            display: flex; /* Para alinear icono y texto */
+            align-items: center;
+            list-style: none; /* Quita el marcador por defecto */
+            color: #212529; /* Casi negro para el texto del summary */
+            background-color: #ffffff;
+            border-bottom: 1px solid #dee2e6;
+            border-radius: 8px 8px 0 0; /* Redondeo solo arriba si está cerrado */
+        }
+        details[open] summary {
+            border-radius: 8px 8px 0 0; /* Mantiene redondeo arriba al abrir */
+        }
+
+        summary::-webkit-details-marker { display: none; }
+        summary::marker { display: none; }
+
+        summary .icon {
+            margin-right: 10px;
+            transition: transform 0.3s ease-in-out;
+            font-size: 1.2em;
+            color: #007bff;
+        }
+        details[open] summary .icon {
+            transform: rotate(90deg);
+        }
+
+        .content-block {
+            padding: 20px;
+            border-top: 1px dashed #ced4da; /* Línea punteada sutil */
+            background-color: #ffffff;
+            border-radius: 0 0 8px 8px; /* Redondeo solo abajo */
+        }
+
+        .content-block ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+        .content-block li {
+            margin-bottom: 12px;
+            padding-left: 28px;
+            position: relative;
+        }
+        .content-block li::before {
+            content: "›"; /* Icono de flecha simple */
+            position: absolute;
+            left: 5px;
+            top: 1px;
+            font-size: 1.4em;
+            color: #007bff;
+            font-weight: bold;
+        }
+
+        .highlight {
+            background-color: #e6f7ff; /* Azul muy claro */
+            border-left: 6px solid #0056b3; /* Azul oscuro */
+            padding: 20px;
+            margin: 25px 0;
+            border-radius: 8px;
+        }
+        .highlight h2 {
+            color: #004085; /* Azul aún más oscuro */
+            margin-top: 0;
+        }
+
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-top: 20px;
+        }
+        .grid-item {
+            background: #ffffff;
+            padding: 20px;
+            border-radius: 8px;
+            border: 1px solid #dee2e6;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        .grid-item:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 6px 16px rgba(0, 123, 255, 0.15); /* Sombra azul sutil */
+        }
+        .grid-item h3 {
+            margin-top: 0;
+            color: #007bff; /* Azul */
+            font-size: 1.3rem;
+        }
+
+        footer {
+            text-align: center;
+            padding: 25px;
+            background: #343a40; /* Gris oscuro */
+            color: #f8f9fa; /* Texto claro */
+            margin-top: 40px;
+            border-radius: 0 0 10px 10px;
+        }
+        footer p {
+            margin: 0;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive */
+        @media(max-width:768px){
+            .container {
+                width: 95%;
+                margin: 10px auto;
+                padding: 15px;
+            }
+            header h1 {
+                font-size: 2rem;
+            }
+            nav ul li {
+                display: block;
+                margin: 8px 0;
+            }
+            nav ul li a {
+                display: block;
+            }
+            .section h2 {
+                font-size: 1.6rem;
+            }
+            .grid-container {
+                grid-template-columns: 1fr; /* Una columna en móviles */
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Perspectivas Clave en Ciberseguridad</h1>
+        <p>Un Análisis Detallado Basado en Investigaciones Recientes</p>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="#etica" class="active">Dimensiones Éticas</a></li>
+            <li><a href="#ia">IA en Ciberseguridad</a></li>
+            <li><a href="#gestion">Gestión y Marcos</a></li>
+            <li><a href="#fd">Fabricación Digital</a></li>
+            <li><a href="#educacion">Educación y Habilidades</a></li>
+            <li><a href="#futuro">Futuro y Amenazas</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <section id="intro" class="section">
+            <h2>Introducción: Navegando el Complejo Mundo de la Ciberseguridad</h2>
+            <p>La ciberseguridad es una disciplina dinámica y esencial en nuestra era digital. Esta página sintetiza hallazgos cruciales de investigaciones líderes, abordando desde los intrincados dilemas éticos hasta las aplicaciones avanzadas de la inteligencia artificial, la gestión estratégica de la seguridad en organizaciones, los desafíos únicos en la fabricación digital y la imperante necesidad de una educación especializada. Comprender estas múltiples facetas es clave para forjar un futuro digital más seguro.</p>
+        </section>
+
+        <section id="etica" class="section">
+            <h2>Dimensiones Éticas en la Ciberseguridad</h2>
+            <details open>
+                <summary><span class="icon">▸</span>Principios Éticos Fundamentales y Dilemas (Basado en Pawlicka et al.)</summary>
+                <div class="content-block">
+                    <p>La ética en ciberseguridad presenta un complejo entramado de responsabilidades y potenciales daños, requiriendo un equilibrio constante.</p>
+                    <ul>
+                        <li><strong>Privacidad como Eje Central:</strong> Amenazada por fugas de datos, brechas y uso indebido. El desafío es proteger la información sin vulnerar la privacidad del usuario, especialmente con la expansión de IoT y la nube.</li>
+                        <li><strong>Hacking Ético y sus Encrucijadas:</strong> Los "hackers de sombrero blanco" enfrentan dilemas de confianza, legalidad y el manejo de hallazgos incidentales (ej. material ilegal). La ausencia de un código de conducta universal es notable.</li>
+                        <li><strong>Inteligencia Artificial y Sesgos:</strong> Los sistemas de IA pueden perpetuar sesgos presentes en sus datos de entrenamiento, resultando en aplicaciones de ciberseguridad discriminatorias. La explicabilidad y equidad son imperativos.</li>
+                        <li><strong>Consentimiento Informado Real:</strong> Existe una brecha en la concienciación de los usuarios sobre la recolección y uso de datos por dispositivos IoT. Se requiere transparencia absoluta en términos y condiciones.</li>
+                        <li><strong>Identificación de "Señales Débiles":</strong> Es crucial descubrir preocupaciones éticas emergentes o subestimadas (los "cisnes negros") para anticipar dilemas en áreas como la neurotecnología o la computación cuántica.</li>
+                        <li><strong>Principios Éticos Propuestos:</strong> Prácticas éticas en ciberseguridad deben fundamentarse en la Beneficencia, No Maleficencia, Autonomía, Justicia y Explicabilidad.</li>
+                    </ul>
+                </div>
+            </details>
+        </section>
+
+        <section id="ia" class="section">
+            <h2>Inteligencia Artificial en la Ciberseguridad: Capacidades y Desafíos</h2>
+            <details>
+                <summary><span class="icon">▸</span>Aprovechando la IA para una Defensa Mejorada (Basado en Zeadally et al.)</summary>
+                <div class="content-block">
+                    <p>La Inteligencia Artificial (IA) y el Aprendizaje Automático (ML) son herramientas transformadoras contra ciberamenazas sofisticadas, aunque su uso no está exento de desafíos.</p>
+                    <ul>
+                        <li><strong>Detección Avanzada de Amenazas:</strong> IA/ML procesan volúmenes masivos de datos para identificar anomalías, intrusiones (DoS, malware) y patrones maliciosos que evaden sistemas tradicionales.</li>
+                        <li><strong>Técnicas de ML Aplicadas:</strong>
+                            <ul>
+                                <li><strong>Aprendizaje Supervisado:</strong> Usa datos etiquetados (ej. Naïve Bayes).</li>
+                                <li><strong>Aprendizaje No Supervisado:</strong> Descubre patrones en datos no etiquetados.</li>
+                                <li><strong>Árboles de Decisión:</strong> Generan clasificaciones basadas en reglas para alertas en tiempo real.</li>
+                                <li><strong>Máquinas de Vectores de Soporte (SVMs):</strong> Útiles en la clasificación de tráfico y detección de ataques simulados.</li>
+                                <li><strong>Redes Neuronales Artificiales (RNAs):</strong> Se adaptan a nuevas formas de comunicación, detectando ataques de día cero mediante el aprendizaje de incidentes recientes.</li>
+                                <li><strong>Mapas Autoorganizados (SOMs):</strong> Facilitan la visualización de anomalías de red y la reducción de dimensionalidad de datos.</li>
+                            </ul>
+                        </li>
+                        <li><strong>El Factor Humano como Vulnerabilidad:</strong> La IA complementa, pero no reemplaza, la vigilancia humana. Es crucial en la detección de phishing y JavaScript malicioso.</li>
+                        <li><strong>Retos Inherentes a la IA:</strong> Los sistemas de IA son susceptibles a ataques (IA adversaria). Es fundamental garantizar su robustez, equidad y explicabilidad.</li>
+                         <li><strong>Técnicas de Inspiración Biológica:</strong> El Procesamiento de Lenguaje Natural (PNL) para detectar discurso de odio; Redes Generativas Antagónicas (GANs) para identificar esteganografía.</li>
+                    </ul>
+                </div>
+            </details>
+        </section>
+
+        <section id="gestion" class="section">
+            <h2>Gestión de la Ciberseguridad: Marcos Estratégicos y Operacionales</h2>
+            <details>
+                <summary><span class="icon">▸</span>Gestión Sistemática: De lo Táctico a lo Operacional (Basado en Domínguez-Dorado et al. - CyberTOMP)</summary>
+                <div class="content-block">
+                    <p>Una ciberseguridad eficaz se basa en una gestión estructurada que conecte la estrategia global con la ejecución táctica y operacional, siempre con un enfoque en los activos críticos del negocio.</p>
+                    <ul>
+                        <li><strong>Integración de Niveles de Gestión:</strong> Los marcos existentes suelen enfocarse en la estrategia, dejando un vacío en los elementos procedimentales tácticos y operacionales. CyberTOMP se propone cerrar esta brecha.</li>
+                        <li><strong>Enfoque en Activos del Negocio:</strong> La priorización de esfuerzos de ciberseguridad debe basarse en la criticidad de los activos, identificada a través del Análisis de Impacto en el Negocio (BIA).</li>
+                        <li><strong>Alineación con la Estrategia Corporativa:</strong> Es vital conectar las actividades de los niveles inferiores con la estrategia mediante herramientas como el BIA y el Plan Maestro de Ciberseguridad (CSMP).</li>
+                        <li><strong>Reutilización del Marco NIST:</strong> Se propone el uso de las funciones del Marco de Ciberseguridad del NIST (Identificar, Proteger, Detectar, Responder y Recuperar) como base para la Lista Unificada de Resultados Esperados (ULEO).</li>
+                        <li><strong>Fomentando Holismo y Unidad de Acción:</strong> Esencial promover la coordinación interdepartamental y criterios de evaluación homogéneos para superar los silos organizacionales.</li>
+                        <li><strong>El Proceso CyberTOMP:</strong> Articula fases como Iniciación, Planificación, Ejecución, Monitoreo y Control, y Mejora Continua, con roles claros para comités como el TSSC (Comité Directivo Táctico-Estratégico) y el ACOT (Equipo Operacional de Ciberseguridad del Activo).</li>
+                    </ul>
+                </div>
+            </details>
+        </section>
+
+        <section id="fd" class="section">
+            <h2>Ciberseguridad en la Fabricación Digital (FD)</h2>
+            <details>
+                <summary><span class="icon">▸</span>Amenazas y Defensas Específicas en la FD (Basado en Mahesh et al.)</summary>
+                <div class="content-block">
+                    <p>La Industria 4.0 y la digitalización de la manufactura traen eficiencias, pero también riesgos cibernéticos únicos, especialmente en sistemas interconectados como la Fabricación Híbrida (HM).</p>
+                    <ul>
+                        <li><strong>Nodos Vulnerables Clave en FD:</strong>
+                            <ul>
+                                <li>Manipulación de instrucciones (ej. alteración de G-code).</li>
+                                <li>Ataques de repetición para engañar a sistemas de monitoreo.</li>
+                                <li>Ataques a bucles de retroalimentación (falseo del estado de la máquina o del proceso).</li>
+                                <li>Ataques de canal lateral (conducentes al robo de Propiedad Intelectual y falsificación).</li>
+                            </ul>
+                        </li>
+                        <li><strong>Taxonomía de Ataques Adaptada a la FD:</strong>
+                            <ul>
+                                <li><strong>Objetivos Principales:</strong> Piratería de diseños, Sabotaje de producción, Falsificación de productos.</li>
+                                <li><strong>Métodos de Ataque:</strong> Denegación de Servicio (DoS), Ingeniería Inversa, Manipulación de Datos, Degradación de la Fiabilidad, Fugas por Canales Laterales.</li>
+                                <li><strong>Blancos Comunes:</strong> Software CAD, archivos STL, G-code, máquinas de fabricación, sensores/actuadores, y controladores.</li>
+                            </ul>
+                        </li>
+                        <li><strong>Contramedidas Esenciales en FD:</strong>
+                            <ul>
+                                <li><strong>Marcas de Agua (Watermarking):</strong> Incrustar información oculta para autenticación de diseños o archivos.</li>
+                                <li><strong>Autenticación Robusta:</strong> Verificar la identidad de archivos, mensajes y dispositivos en la cadena de producción.</li>
+                                <li><strong>Huellas Digitales (Fingerprinting):</strong> Usar características intrínsecas de diseños o máquinas para identificación única.</li>
+                                <li><strong>Ofuscación de Diseños:</strong> Dificultar la ingeniería inversa de archivos CAD.</li>
+                                <li><strong>Detección de Anomalías Multicapa:</strong> Aplicada a controladores, máquinas y redes.</li>
+                            </ul>
+                        </li>
+                        <li><strong>Defensas Innovadoras para Fabricación:</strong> Incluyen marcas de agua dinámicas para controladores, ofuscación en archivos CAD, incrustación de códigos QR en piezas, y huellas acústicas para proteger la PI.</li>
+                    </ul>
+                </div>
+            </details>
+        </section>
+
+        <section id="educacion" class="section">
+            <h2>Educación en Ciberseguridad y Desarrollo de Habilidades</h2>
+            <details>
+                <summary><span class="icon">▸</span>Cerrando la Brecha de Talento (Basado en Hajny et al.)</summary>
+                <div class="content-block">
+                    <p>La escasez global de talento en ciberseguridad demanda marcos educativos innovadores y currículos alineados con las exigencias del mercado laboral.</p>
+                    <ul>
+                        <li><strong>El Problema de la Brecha de Habilidades:</strong> Existe un déficit crítico de profesionales cualificados en ciberseguridad a nivel global.</li>
+                        <li><strong>Desafíos en el Diseño Curricular:</strong> Los programas actuales a menudo se consideran extensiones de la informática, omitiendo la naturaleza inherentemente interdisciplinaria (que incluye derecho, política, factores humanos y ética).</li>
+                        <li><strong>Marcos de Referencia para la Educación:</strong>
+                            <ul>
+                                <li><strong>Marco NICE (NIST SP 800-181):</strong> Define Conocimientos, Habilidades y Aptitudes (KSAs) para roles laborales específicos en ciberseguridad.</li>
+                                <li><strong>Marco de Habilidades en Ciberseguridad SPARTA (CSF):</strong> Conecta KSAs con roles laborales, facilitando el diseño de currículos relevantes para el mercado.</li>
+                                <li><strong>CyBOK (Cuerpo de Conocimiento en Ciberseguridad):</strong> Sistematiza el conocimiento fundamental y generalmente reconocido en ciberseguridad.</li>
+                            </ul>
+                        </li>
+                        <li><strong>Metodología para el Desarrollo Curricular:</strong> Contempla el mapeo de capacidades de la fuerza laboral, el análisis de recomendaciones de organismos (ej. CSEC2017 JTF, directrices ACS) y el estudio de programas existentes.</li>
+                        <li><strong>Componentes Curriculares Esenciales:</strong> Temas fundamentales (informática, matemáticas), tópicos centrales de ciberseguridad, y tendencias emergentes (computación cuántica, IoT, seguridad en IA). La experiencia práctica (ciber-rangos, CTFs) es indispensable.</li>
+                        <li><strong>Herramientas de Apoyo:</strong> El "Diseñador de Currículos" (Curricula Designer) es una aplicación web para asistir en la creación y análisis de programas de estudio en función de los roles laborales.</li>
+                    </ul>
+                </div>
+            </details>
+        </section>
+
+        <section id="futuro" class="section">
+            <h2>Perspectivas Futuras y Amenazas Emergentes en Ciberseguridad</h2>
+            <div class="grid-container">
+                <div class="grid-item">
+                    <h3>Anticipando "Cisnes Negros" (Perspectiva de Pawlicka et al.)</h3>
+                    <p>Más allá de las preocupaciones habituales, es vital identificar "señales débiles" (problemas ocultos o poco discutidos). Esto incluye dilemas éticos emergentes de:</p>
+                    <ul>
+                        <li>La ubicuidad del IoT y sus implicaciones para la privacidad de datos.</li>
+                        <li>La ética en la computación en la nube (propiedad de datos, jurisdicción).</li>
+                        <li>La desinformación, la manipulación informativa y los DeepFakes.</li>
+                        <li>La neurotecnología y su potencial para la manipulación conductual.</li>
+                        <li>El impacto de la computación cuántica sobre los mecanismos de cifrado actuales.</li>
+                    </ul>
+                </div>
+                <div class="grid-item">
+                    <h3>IA: Una Herramienta de Doble Filo (Perspectiva de Zeadally et al., Pawlicka et al.)</h3>
+                    <p>Si bien la IA fortalece las defensas, también introduce nuevos vectores de ataque y consideraciones éticas complejas:</p>
+                    <ul>
+                        <li>IA Adversaria: Ataques diseñados para confundir o perturbar modelos de ML.</li>
+                        <li>El uso ético de la IA en la vigilancia y la toma de decisiones automatizada.</li>
+                        <li>La "carrera armamentista" cibernética, donde los atacantes también emplean IA.</li>
+                        <li>La necesidad de sistemas de IA robustos, explicables y equitativos.</li>
+                    </ul>
+                </div>
+                <div class="grid-item">
+                    <h3>Seguridad en Dominios Especializados (Perspectiva de Mahesh et al., Zeadally et al.)</h3>
+                    <p>La ciberseguridad debe ser adaptada y especializada para sectores críticos y cada vez más interconectados:</p>
+                    <ul>
+                        <li><strong>Fabricación Digital:</strong> Protección de la propiedad intelectual, garantía de la integridad del producto y seguridad de los sistemas de tecnología operacional (OT).</li>
+                        <li><strong>Internet de las Cosas (IoT):</strong> Gestión de la privacidad, seguridad de los dispositivos y mitigación de botnets a gran escala.</li>
+                        <li><strong>Sistemas Ciberfísicos (CPS):</strong> Asegurar la seguridad y fiabilidad en entornos donde los controles digitales interactúan directamente con el mundo físico.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="section highlight">
+            <h2>Imperativos Fundamentales en Ciberseguridad</h2>
+            <p>A través de las diversas áreas de investigación, emergen varios temas recurrentes como pilares para una postura de ciberseguridad sólida y adaptable:</p>
+            <ul>
+                <li><strong>Enfoque Holístico e Interdisciplinario:</strong> La ciberseguridad trasciende lo técnico; es una convergencia de ética, derecho, comportamiento humano, gestión y educación.</li>
+                <li><strong>Adaptación Continua y Evolutiva:</strong> El panorama de amenazas cambia incesantemente, exigiendo investigación constante, educación actualizada y revisión periódica de estrategias y marcos de defensa.</li>
+                <li><strong>Transición de Reactivo a Proactivo:</strong> Es crucial moverse más allá de la simple respuesta a incidentes hacia la identificación proactiva de riesgos, la anticipación de futuras amenazas y la construcción de sistemas inherentemente resilientes.</li>
+                <li><strong>Prioridad en Educación y Talento:</strong> Cerrar la brecha de habilidades en ciberseguridad mediante currículos bien estructurados y el fomento del desarrollo profesional continuo es un pilar fundamental.</li>
+                <li><strong>Vigilancia Ética Constante:</strong> Una evaluación permanente de las implicaciones éticas de las nuevas tecnologías y las prácticas de ciberseguridad es indispensable para un desarrollo responsable.</li>
+            </ul>
+        </section>
+    </div>
+
+    <footer>
+        <p>&copy; 2023 Perspectivas Clave en Ciberseguridad. Contenido compilado con fines informativos y educativos.</p>
+    </footer>
+
+    <script>
+        // Simple script to manage active class on nav links (optional)
+        const navLinks = document.querySelectorAll('nav ul li a');
+        const sections = document.querySelectorAll('.container section');
+
+        function setActiveLink() {
+            let currentSectionId = 'etica'; // Default
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop - 150; // Offset for nav height
+                if (pageYOffset >= sectionTop) {
+                    currentSectionId = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${currentSectionId}`) {
+                    link.classList.add('active');
+                }
+            });
+        }
+
+        window.addEventListener('scroll', setActiveLink);
+        window.addEventListener('load', setActiveLink); // Set active on load
+
+        // Smooth scroll for nav links
+        navLinks.forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80, // Adjust offset as needed
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>
